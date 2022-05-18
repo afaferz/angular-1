@@ -1,0 +1,27 @@
+<section class="container">
+    <h2 class="title">Transfers</h2>
+    <table class="table">
+        <thead class="table__head">
+            <th class="table__head__content">Date</th>
+            <th class="table__head__content">Value</th>
+            <th class="table__head__content">To</th>
+        </thead>
+        <tbody *ngIf="transfers?.length > 0; else emptyTransfers">
+            <tr *ngFor="let transfer of transfers" class="table__line">
+                <td class="table__content">
+                    {{ transfer.date | date: "shortDate" }}
+                </td>
+                <td class="table__content">{{ transfer.value | currency }}</td>
+                <td class="table__content">{{ transfer.to }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ng-template #emptyTransfers>
+        <tr class="table__line">
+            <td colspan="3">
+                <p colspan="3">No transfers.</p>
+            </td>
+        </tr>
+    </ng-template>
+</section>
